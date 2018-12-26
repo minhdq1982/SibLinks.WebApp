@@ -1,0 +1,204 @@
+    <div class="content ask-a-question no-playlist" id="videos-details">
+        <!-- Breadcrum -->
+        <div class="breadcrum">
+            <div class="container">
+                <h5>Siblinks / Videos <span>/ {{videoInfo.firstName +" " + videoInfo.lastName}}</span></h5>
+                <!-- Search form -->
+                <div class="search">
+                    <form class="navbar-form" role="search">
+                        <div class="input-group">
+                            <div class="input-group-btn">
+                                <button class="btn btn-default" ><span data-icon="&#x55;"></span></button>
+                            </div>
+                            <input type="text" class="form-control" placeholder="Search" name="srch-term" id="srch-term">
+
+                        </div>
+                    </form>
+                </div><!-- /End Search form -->
+            </div>
+
+        </div><!-- /End Breadcrum -->
+        <!-- Container -->
+        <div class="body">
+            <!-- Content -->
+            <section class="content videos-details-content">
+
+                <!-- Video details playlist -->
+                <div class="video-details-playlist">
+                    <div class="video-details-playlist-wrapper container">
+                        <!-- 16:9 aspect ratio -->
+                        <div class="video-iframe col-md-8" id="video">
+                            <!--<iframe width="100%" height="430px" src="https://www.youtube.com/embed/B7wkzmZ4GBw?enablejsapi=1" frameborder="0"></iframe>-->
+
+                        </div>
+
+                        <div class="control-video">
+                            <a href="#series-video-list" class="left"><span data-icon="&#x34;"></span></a>
+                            <a href="#series-video-list" class="right"><span data-icon="&#x35;"></span></a>
+                        </div>
+
+                        <!-- 4:3 aspect ratio -->
+                        <!-- <div class="embed-responsive embed-responsive-4by3">
+                          <iframe class="embed-responsive-item" src="..."></iframe>
+                        </div> -->
+                    </div>
+                </div><!-- /End Video details playlist -->
+
+                <!-- Video details content -->
+                <div class="video-details-content container">
+                    <!-- Left side -->
+                    <div class="post-comment col-md-8">
+                        <div class="post-comment-wrapper">
+                            <div class="video-details-description">
+                                <h3>{{videoInfo.title}}</h3>
+                                <span>from </span><span class="own-video">{{videoInfo.firstName +" " + videoInfo.lastName}}
+                            </span><span class="video-time-add"> {{convertTime(videoInfo.timeStamp)}} ago</span>
+                                <div class="video-mentor-details">
+                                    <div class="videos-rate">
+                                        <div class="video-details-sub">
+                                            <img ng-src="{{imageUrl}}">
+                                            <div class="video-member-subcriber">
+                                                <p>
+                                                    <button><span data-icon="&#x4c;">subscrible</span>
+                                                        <span class="number-subscribers">TODO</span></button>
+                                                </p>
+                                            </div>
+
+                                        </div>
+                                        <p class="videos-rate-infor">
+                                            <span data-icon="&#x49;">{{videoInfo.numViews}}</span>
+                                            <span data-icon="&#xe066;">16</span>
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="videos-start">
+                                            <span>Rate <span class="votes"></span>
+                                            <span ng-repeat="n in range(1,5)" ng-click="rateFunction(n)" ng-class="{'startFilled':n <= rateNum}" data-icon="&#xe033;"></span>
+                                </div>
+                                <div class="video-detaile-script">
+                                    <p>{{videoInfo.title}}</p>
+                                    <button class="read-more">Read more <span data-icon="&#x33;"></span></button>
+                                </div>
+                            </div>
+                            <div class="video-comment post">
+                                <div class="video-comment-sum">
+                                    <h3>{{comments.length}} Comments</h3>
+                                </div>
+                                <div class="post-footer">
+                                    <div class="input-group">
+                                        <!--<img class="avatar" src="http://bootdey.com/img/Content/user_1.jpg" alt="avatar">-->
+                                        <input type="text" ng-model="txtComment" class="form-control" placeholder="Add a comment" type="text" id="add-comment"/>
+                                        <button class="btn btn-primary" ng-disabled="!txtComment" ng-click="addComment()"> Add comment</button>
+                                    </div>
+                                    <ul class="comments-list">
+                                        <li class="comment"  ng-repeat="comment in comments">
+                                            <a class="pull-left" href="#">
+                                                <img class="avatar" ng-src="{{comment.imageUrl}}" alt="avatar">
+                                            </a>
+                                            <div class="comment-body">
+                                                <div class="comment-heading">
+                                                    <h4 class="user">{{comment.firstName+" "+ comment.lastName}}</h4>
+                                                    <h5 class="time">{{convertTime(comment.timestamp)}}</h5>
+                                                </div>
+                                                <p>{{comment.content}}</p>
+                                            </div>
+
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div><!-- /End Left side -->
+
+                    <!-- Right side -->
+                    <div class="related-video col-md-4">
+                        <h3>Related videos</h3>
+                        <ul class="related-video-list">
+                            <li class="video-list-item">
+                                <div class="content-warpper">
+                                    <a href="https://www.youtube.com/embed/7vPoxoRhDXU">
+                                        <div class="thumb-video">
+                                            <img src="../images/feature.png">
+                                        </div>
+                                        <div class="detail-video">
+                                            <p class="title-video">
+                                                Trigonometic tutorial 1
+                                            </p>
+                                            <span class="owner-video">
+                                                        from<span class="own-video"> Brian Scott</span>
+                                                    </span><br>
+                                            <span class="view-count">
+                                                        view: <span>5560</span>
+                                                    </span>
+                                        </div>
+                                    </a>
+                                </div>
+                            </li>
+                            <li class="video-list-item">
+                                <div class="content-warpper">
+                                    <a href="https://www.youtube.com/embed/7vPoxoRhDXU">
+                                        <div class="thumb-video">
+                                            <img src="../images/feature.png">
+                                        </div>
+                                        <div class="detail-video">
+                                            <p class="title-video">
+                                                Trigonometic tutorial 1
+                                            </p>
+                                            <span class="owner-video">
+                                                        from<span class="own-video"> Brian Scott</span>
+                                                    </span><br>
+                                            <span class="view-count">
+                                                        view: <span>5560</span>
+                                                    </span>
+                                        </div>
+                                    </a>
+                                </div>
+                            </li>
+                            <li class="video-list-item">
+                                <div class="content-warpper">
+                                    <a href="https://www.youtube.com/embed/7vPoxoRhDXU">
+                                        <div class="thumb-video">
+                                            <img src="../images/feature.png">
+                                        </div>
+                                        <div class="detail-video">
+                                            <p class="title-video">
+                                                Trigonometic tutorial 1
+                                            </p>
+                                            <span class="owner-video">
+                                                        from<span class="own-video"> Brian Scott</span>
+                                                    </span><br>
+                                            <span class="view-count">
+                                                        view: <span>5560</span>
+                                                    </span>
+                                        </div>
+                                    </a>
+                                </div>
+                            </li>
+                            <li class="video-list-item">
+                                <div class="content-warpper">
+                                    <a href="https://www.youtube.com/embed/7vPoxoRhDXU">
+                                        <div class="thumb-video">
+                                            <img src="../images/feature.png">
+                                        </div>
+                                        <div class="detail-video">
+                                            <p class="title-video">
+                                                Trigonometic tutorial 1
+                                            </p>
+                                            <span class="owner-video">
+                                                        from<span class="own-video"> Brian Scott</span>
+                                                    </span><br>
+                                            <span class="view-count">
+                                                        view: <span>5560</span>
+                                                    </span>
+                                        </div>
+                                    </a>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div><!-- /End Video details content -->
+
+            </section><!-- /End content -->
+        </div><!-- End container -->
+
+    </div>
